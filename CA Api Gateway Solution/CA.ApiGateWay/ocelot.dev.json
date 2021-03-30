@@ -1,0 +1,66 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/v1/api/activedirectory/authenticate",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app2-dev.taskus.com"
+        }
+      ],
+      "UpstreamPathTemplate": "/v1/epmsservice/ad",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "RouteIsCaseSensitive": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/Account/Authenticate",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5007
+        }
+      ],
+      "UpstreamPathTemplate": "/mnvservice/authenticate",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "RouteIsCaseSensitive": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/Account/values/{email}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5007
+        }
+      ],
+      "UpstreamPathTemplate": "/mnvservice/values/{email}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "RouteIsCaseSensitive": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/Account/get-token/{email}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/authservice/{email}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "RouteIsCaseSensitive": false
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5005"
+  }
+}
